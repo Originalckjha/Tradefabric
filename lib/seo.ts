@@ -1,0 +1,40 @@
+export const siteConfig = {
+  name: "TradeFabric",
+  tagline: "Premium Quality Fabrics for Sportswear, Activewear & Fashion",
+  description:
+    "TradeFabric supplies premium quality knitted and woven fabrics for sportswear, activewear, athleisure, and fashion industries. Polyester, nylon, and spandex blended fabrics engineered for superior comfort, stretch, and durability.",
+  url: "https://www.tradefabric.com",
+  ogImage: "https://www.tradefabric.com/og-image.jpg",
+  keywords: [
+    "fabric supplier India",
+    "sportswear fabric",
+    "activewear fabric",
+    "performance fabric",
+    "polyester fabric",
+    "nylon spandex fabric",
+    "knitted fabric wholesale",
+    "woven fabric manufacturer",
+    "fashion fabric supplier",
+    "athleisure fabric",
+    "technical fabric",
+    "fabric manufacturer Delhi",
+    "bulk fabric supplier",
+    "premium fabric wholesale",
+    "Anil International fabrics",
+  ],
+  address: {
+    street: "Delhi",
+    city: "New Delhi",
+    state: "Delhi",
+    country: "India",
+    postalCode: "110001",
+  },
+  contact: {
+    email: "info@tradefabric.com",
+    phone: "+91-11-0000-0000",
+  },
+  social: {
+    linkedin: "https://www.linkedin.com/company/tradefabric",
+    instagram: "https://www.instagram.com/tradefabric",
+  },
+};
