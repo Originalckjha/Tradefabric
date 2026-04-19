@@ -1,465 +1,193 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
-import {
-  ArrowRight,
-  Award,
-  Globe,
-  Layers,
-  ShieldCheck,
-  Truck,
-  Zap,
-  ChevronRight,
-  Star,
-  CheckCircle,
-  Phone,
-} from "lucide-react";
-import { siteConfig } from "@/lib/seo";
+import { ArrowRight, CheckCircle, Star, Zap, Layers, Globe, Award, Truck, ShieldCheck } from "lucide-react";
+import { SITE } from "@/lib/config";
 
 export const metadata: Metadata = {
-  title: `${siteConfig.name} | Premium Fabric Supplier for Sportswear & Activewear`,
-  description:
-    "TradeFabric supplies premium polyester, nylon, and spandex blended fabrics for sportswear, activewear, athleisure, and fashion industries. Engineered for performance. Based in New Delhi, India.",
-  alternates: { canonical: siteConfig.url },
+  title: `${SITE.name} | Premium Quality Fabrics for Sportswear, Activewear & Fashion`,
+  description: SITE.description,
+  alternates: { canonical: SITE.url },
 };
 
-const features = [
-  {
-    icon: Award,
-    title: "Premium Quality Yarns",
-    desc: "Superior fabric starts with superior yarns. We source the finest raw materials for every production run.",
-  },
-  {
-    icon: Layers,
-    title: "Extensive Fabric Range",
-    desc: "From high-stretch spandex blends to technical performance textiles — 500+ varieties in stock.",
-  },
-  {
-    icon: Zap,
-    title: "Performance Engineered",
-    desc: "Our fabrics deliver unmatched comfort, stretch recovery, moisture management, and durability.",
-  },
-  {
-    icon: Globe,
-    title: "Global Standards",
-    desc: "Tested to meet international quality benchmarks. Compliant with global fashion industry requirements.",
-  },
-  {
-    icon: Truck,
-    title: "Reliable Supply Chain",
-    desc: "Consistent on-time delivery with flexible MOQs to serve large manufacturers and boutique brands alike.",
-  },
-  {
-    icon: ShieldCheck,
-    title: "Rigorous QA Testing",
-    desc: "Every batch tested for colour fastness, tensile strength, shrinkage, and dimensional stability.",
-  },
+const stats = [
+  { v: "500+", l: "Fabric Varieties" },
+  { v: "20+",  l: "Years Experience" },
+  { v: "50+",  l: "Countries Served" },
+  { v: "99%",  l: "On-time Delivery" },
 ];
 
 const categories = [
-  {
-    id: "sportswear",
-    name: "Sportswear Fabrics",
-    desc: "High-performance knitted fabrics for athletic use — breathable, quick-dry, and durable.",
-    compositions: ["Polyester / Spandex", "Nylon / Spandex", "Recycled Polyester"],
-    gradient: "from-blue-700 to-blue-900",
-    image: "https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=600&q=80",
-  },
-  {
-    id: "activewear",
-    name: "Activewear Fabrics",
-    desc: "Stretch-rich fabrics with excellent recovery for yoga, gym, and everyday active wear.",
-    compositions: ["80% Nylon / 20% Spandex", "Supplex Nylon", "PowerFlex"],
-    gradient: "from-emerald-700 to-emerald-900",
-    image: "https://images.unsplash.com/photo-1518611012118-696072aa579a?w=600&q=80",
-  },
-  {
-    id: "athleisure",
-    name: "Athleisure Fabrics",
-    desc: "Versatile fabrics bridging sport and casual — cotton, modal, and bamboo blends.",
-    compositions: ["Cotton / Spandex", "Modal / Spandex", "Bamboo Blends"],
-    gradient: "from-violet-700 to-violet-900",
-    image: "https://images.unsplash.com/photo-1576566588028-4147f3842f27?w=600&q=80",
-  },
-  {
-    id: "fashion",
-    name: "Fashion & Casual Fabrics",
-    desc: "Trend-forward woven and knitted fabrics for contemporary fashion labels.",
-    compositions: ["Woven Polyester", "Chiffon", "Scuba Crepe"],
-    gradient: "from-rose-700 to-rose-900",
-    image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80",
-  },
+  { id: "sportswear", name: "Sportswear Fabrics",  desc: "High-performance knitted fabrics — breathable, quick-dry and durable for athletic use.", tags: ["Polyester/Spandex","Nylon/Spandex","Recycled Polyester"], img: "https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=700&q=80" },
+  { id: "activewear", name: "Activewear Fabrics",  desc: "Ultra-stretch fabrics with excellent recovery for yoga, gym and daily active wear.",        tags: ["Nylon/Spandex","Supplex Nylon","PowerFlex"],              img: "https://images.unsplash.com/photo-1518611012118-696072aa579a?w=700&q=80" },
+  { id: "athleisure", name: "Athleisure Fabrics",  desc: "Versatile comfort fabrics bridging sport and casual — cotton, modal and bamboo blends.",    tags: ["Cotton/Spandex","Modal Blend","Bamboo"],                  img: "https://images.unsplash.com/photo-1576566588028-4147f3842f27?w=700&q=80" },
+  { id: "fashion",    name: "Fashion & Casual",    desc: "Trend-forward woven and knitted fabrics for contemporary fashion and garment labels.",       tags: ["Woven Polyester","Scuba Crepe","Chiffon"],               img: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=700&q=80" },
 ];
 
-const stats = [
-  { value: "500+", label: "Fabric Varieties" },
-  { value: "20+", label: "Years Experience" },
-  { value: "50+", label: "Countries Served" },
-  { value: "99%", label: "On-time Delivery" },
+const features = [
+  { icon: Award,       title: "Premium Quality Yarns",   desc: "Superior fabric starts with superior yarns — we source only the finest raw materials." },
+  { icon: Layers,      title: "500+ Fabric Varieties",   desc: "From high-stretch spandex blends to technical performance textiles — all in one place." },
+  { icon: Zap,         title: "Performance Engineered",  desc: "Unmatched comfort, four-way stretch, moisture management and wash durability." },
+  { icon: Globe,       title: "Global Standards",        desc: "ISO-compliant testing for colour fastness, tensile strength and dimensional stability." },
+  { icon: Truck,       title: "Flexible MOQs",           desc: "We serve large manufacturers and boutique labels alike — no order is too small or too big." },
+  { icon: ShieldCheck, title: "Rigorous QA",             desc: "Every batch is tested and certified before dispatch. Zero-compromise quality assurance." },
+];
+
+const process = [
+  { n: "01", t: "Share Requirements", d: "Tell us your fabric specification — composition, weight, GSM, end use and quantity." },
+  { n: "02", t: "Sample Development", d: "We dispatch physical swatches or develop a custom sample within 5–7 working days." },
+  { n: "03", t: "Confirm & Produce",  d: "Approve the sample, confirm your order, and we begin production with full QA oversight." },
+  { n: "04", t: "Test & Dispatch",    d: "Every roll is tested, measured and packed. Real-time tracking shared on dispatch." },
 ];
 
 const testimonials = [
-  {
-    name: "Priya Mehta",
-    role: "Head of Sourcing, ActiveEdge Apparel",
-    country: "🇮🇳 India",
-    quote:
-      "TradeFabric has been our go-to fabric supplier for 6 years. The consistency of quality across every order is exceptional — we never have to worry about batch variation.",
-    rating: 5,
-  },
-  {
-    name: "Marco Bianchi",
-    role: "Production Director, SportLux Milano",
-    country: "🇮🇹 Italy",
-    quote:
-      "We source our performance nylon-spandex exclusively from TradeFabric. The hand feel and recovery are unmatched at this price point. Highly recommend for premium activewear.",
-    rating: 5,
-  },
-  {
-    name: "Sarah Collins",
-    role: "Founder, Moxie Activewear",
-    country: "🇬🇧 UK",
-    quote:
-      "As a small brand, I needed a supplier who would work with our lower MOQs. TradeFabric was flexible, fast to respond, and the sample turnaround was excellent.",
-    rating: 5,
-  },
+  { name: "Priya M.",   role: "Head of Sourcing, ActiveEdge Apparel",  flag: "🇮🇳", quote: "Six years, zero batch inconsistencies. TradeFabric is simply the most reliable fabric partner we've worked with in India." },
+  { name: "Marco B.",   role: "Production Director, SportLux Milano",   flag: "🇮🇹", quote: "We source our entire nylon-spandex range from TradeFabric. The hand feel and recovery are unmatched at this price point." },
+  { name: "Sarah C.",   role: "Founder, Moxie Activewear",             flag: "🇬🇧", quote: "As a small brand needing low MOQs, TradeFabric was flexible and responsive. Sample turnaround was excellent." },
 ];
 
-const processSteps = [
-  {
-    step: "01",
-    title: "Enquiry & Requirements",
-    desc: "Share your fabric specification — composition, weight, end use, quantity, and timeline.",
-  },
-  {
-    step: "02",
-    title: "Sample Development",
-    desc: "We dispatch physical swatches or develop a custom sample to match your exact requirements.",
-  },
-  {
-    step: "03",
-    title: "Order Confirmation",
-    desc: "Approve the sample, confirm your order, and we begin production with full QA oversight.",
-  },
-  {
-    step: "04",
-    title: "Quality Check & Dispatch",
-    desc: "Every roll is tested, measured, and packed before dispatch. Real-time tracking provided.",
-  },
-];
-
-const clients = [
-  "Sportswear Brands", "Activewear Labels", "Fashion Houses",
-  "Garment Exporters", "OEM Manufacturers", "Retail Chains",
-];
-
-export default function HomePage() {
+export default function Home() {
   return (
     <>
-      {/* ── Hero ── */}
-      <section className="relative min-h-screen flex items-center pt-[70px] overflow-hidden">
-        {/* Background image */}
-        <div className="absolute inset-0">
-          <Image
-            src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1800&q=85"
-            alt="Premium performance fabric texture"
-            fill
-            priority
-            className="object-cover object-center"
-            sizes="100vw"
-          />
-          <div
-            className="absolute inset-0"
-            style={{
-              background:
-                "linear-gradient(110deg, rgba(10,25,41,0.96) 0%, rgba(16,42,67,0.88) 55%, rgba(10,25,41,0.65) 100%)",
-            }}
-          />
-          {/* Woven grid overlay */}
-          <div
-            className="absolute inset-0 opacity-[0.04]"
-            style={{
-              backgroundImage:
-                "repeating-linear-gradient(0deg,#fff 0,#fff 1px,transparent 0,transparent 40px),repeating-linear-gradient(90deg,#fff 0,#fff 1px,transparent 0,transparent 40px)",
-            }}
-          />
-        </div>
+      {/* ── HERO ── */}
+      <section className="relative min-h-screen flex items-center pt-[105px] overflow-hidden bg-black">
+        {/* Background */}
+        <Image
+          src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1800&q=85"
+          alt="Premium performance fabric" fill priority
+          className="object-cover object-center opacity-20"
+          sizes="100vw"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-black via-black/90 to-black/60" />
+        <div className="bg-grid absolute inset-0 opacity-100" />
 
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-28">
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 py-24 w-full">
           <div className="max-w-3xl">
-            <span
-              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-widest mb-6 border"
-              style={{
-                backgroundColor: "rgba(212,132,42,0.12)",
-                color: "#e29f4d",
-                borderColor: "rgba(212,132,42,0.25)",
-              }}
-            >
-              <span className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse" />
-              Premium Fabric Supplier · New Delhi, India
-            </span>
-
-            <h1
-              className="text-5xl sm:text-6xl lg:text-[72px] font-bold text-white leading-[1.08] mb-6"
-              style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
-            >
-              Fabrics Built for{" "}
-              <span
-                className="relative"
-                style={{ color: "#d4842a" }}
-              >
-                Performance
-              </span>
-              {" "}&amp; Style
-            </h1>
-
-            <p className="text-lg sm:text-xl text-gray-300 leading-relaxed mb-4 max-w-2xl">
-              Premium polyester, nylon, and spandex blended fabrics for
-              sportswear, activewear, athleisure, and fashion — engineered
-              from superior yarns, delivered to global standards.
-            </p>
-
-            <div className="flex flex-wrap gap-3 mb-10 text-sm text-gray-400">
-              {["Sportswear", "Activewear", "Athleisure", "Technical", "Fashion"].map((tag) => (
-                <span
-                  key={tag}
-                  className="px-3 py-1 rounded-full border text-xs"
-                  style={{ borderColor: "rgba(255,255,255,0.15)", color: "#9fb3c8" }}
-                >
-                  {tag}
-                </span>
-              ))}
+            {/* Badge */}
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-green-500/20 bg-green-500/5 text-green-400 text-xs font-semibold uppercase tracking-widest mb-7">
+              <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
+              Premium Fabric Supplier · Badli, Delhi 110042
             </div>
 
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Link
-                href="/products"
-                className="inline-flex items-center justify-center gap-2 px-8 py-4 text-base font-semibold text-white rounded-lg transition-all duration-200 shadow-lg hover:shadow-amber-900/30 hover:-translate-y-0.5"
-                style={{ backgroundColor: "#d4842a" }}
-              >
-                Explore Fabrics
-                <ArrowRight size={18} />
+            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-black text-white leading-[1.05] tracking-tight mb-6">
+              Premium Quality<br />
+              <span className="text-green-gradient">Fabrics</span> For<br />
+              Sportswear, Activewear<br />
+              <span className="text-gray-300">&amp; Fashion Industry</span>
+            </h1>
+
+            <p className="text-lg text-gray-400 leading-relaxed mb-10 max-w-2xl">
+              With a strong foundation in polyester, nylon, and spandex blends, our fabrics are crafted for performance, comfort, and durability — ensuring your products stand out in competitive markets.
+            </p>
+
+            <div className="flex flex-col sm:flex-row gap-4 mb-14">
+              <Link href="/products"
+                className="inline-flex items-center justify-center gap-2 px-8 py-4 text-sm font-bold text-black rounded-lg transition-all hover:brightness-110 hover:-translate-y-0.5 shadow-lg"
+                style={{ background: "#22c55e", boxShadow: "0 4px 20px rgba(34,197,94,0.3)" }}>
+                EXPLORE COLLECTION <ArrowRight size={17} />
               </Link>
-              <Link
-                href="/contact"
-                className="inline-flex items-center justify-center gap-2 px-8 py-4 text-base font-semibold rounded-lg border transition-all duration-200 hover:-translate-y-0.5"
-                style={{
-                  borderColor: "rgba(255,255,255,0.25)",
-                  color: "#fff",
-                  backgroundColor: "rgba(255,255,255,0.06)",
-                }}
-              >
-                Request a Sample
-                <ChevronRight size={18} />
+              <Link href="/contact"
+                className="inline-flex items-center justify-center gap-2 px-8 py-4 text-sm font-semibold text-gray-300 rounded-lg border border-white/10 hover:border-white/20 hover:text-white transition-all">
+                REQUEST SWATCHES
               </Link>
             </div>
 
             {/* Trust row */}
-            <div className="mt-12 flex flex-wrap items-center gap-6">
-              <div className="flex -space-x-2">
-                {["bg-blue-500","bg-emerald-500","bg-violet-500","bg-amber-500"].map((c, i) => (
-                  <div
-                    key={i}
-                    className={`w-8 h-8 rounded-full ${c} border-2 flex items-center justify-center text-white text-xs font-bold`}
-                    style={{ borderColor: "rgba(255,255,255,0.2)" }}
-                  >
-                    {["P","M","S","R"][i]}
-                  </div>
-                ))}
-              </div>
-              <div className="text-sm text-gray-400">
-                Trusted by <span className="text-white font-semibold">500+ brands</span> across 50 countries
-              </div>
+            <div className="flex flex-wrap items-center gap-x-8 gap-y-3 text-sm text-gray-500">
+              {["500+ Fabric Varieties", "20+ Years Experience", "50+ Countries", "contact@tradefabric.com"].map(t => (
+                <span key={t} className="flex items-center gap-1.5">
+                  <CheckCircle size={13} className="text-green-500" /> {t}
+                </span>
+              ))}
             </div>
           </div>
         </div>
-
-        {/* Scroll indicator */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 text-gray-500 text-xs">
-          <span>Scroll</span>
-          <div className="w-px h-8 bg-gradient-to-b from-gray-500 to-transparent" />
-        </div>
       </section>
 
-      {/* ── Stats ── */}
-      <section className="bg-white border-b border-gray-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
-          <div className="grid grid-cols-2 lg:grid-cols-4 divide-x divide-gray-100">
-            {stats.map((s) => (
-              <div key={s.label} className="text-center px-8 py-4">
-                <div className="text-4xl font-bold mb-1" style={{ color: "#d4842a" }}>
-                  {s.value}
-                </div>
-                <div className="text-sm text-gray-500 font-medium">{s.label}</div>
+      {/* ── STATS ── */}
+      <section className="border-y border-white/[0.06] bg-[#111]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+          <div className="grid grid-cols-2 lg:grid-cols-4 divide-x divide-white/[0.06]">
+            {stats.map(({ v, l }) => (
+              <div key={l} className="py-8 px-6 text-center">
+                <div className="text-4xl font-black text-green-400 mb-1">{v}</div>
+                <div className="text-sm text-gray-500 font-medium">{l}</div>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ── Clients served ── */}
-      <section className="py-8 bg-gray-50 border-b border-gray-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-wrap items-center justify-center gap-3">
-            <span className="text-xs text-gray-400 uppercase tracking-widest mr-2">
-              Supplying to
-            </span>
-            {clients.map((c) => (
-              <span
-                key={c}
-                className="px-4 py-1.5 rounded-full text-xs font-medium bg-white border border-gray-200 text-gray-600"
-              >
-                {c}
-              </span>
-            ))}
+      {/* ── CATEGORIES ── */}
+      <section className="py-24 bg-[#0a0a0a]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+          <div className="text-center mb-14">
+            <p className="text-xs font-semibold uppercase tracking-widest text-green-500 mb-2">Our Range</p>
+            <h2 className="text-4xl font-black text-white mb-3">Fabric Categories</h2>
+            <p className="text-gray-500 max-w-lg mx-auto">From technical sportswear to trend-forward fashion — the right fabric for every application.</p>
           </div>
-        </div>
-      </section>
-
-      {/* ── Fabric Categories ── */}
-      <section id="products" className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <span
-              className="text-xs font-semibold uppercase tracking-widest"
-              style={{ color: "#d4842a" }}
-            >
-              Our Range
-            </span>
-            <h2
-              className="text-4xl font-bold mt-2 mb-4"
-              style={{
-                color: "#102a43",
-                fontFamily: "'Playfair Display', Georgia, serif",
-              }}
-            >
-              Fabric Categories
-            </h2>
-            <p className="text-gray-500 max-w-xl mx-auto">
-              From technical sportswear to trend-forward fashion — we have the
-              right fabric for every application.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {categories.map((cat) => (
-              <Link
-                key={cat.id}
-                href={`/products#${cat.id}`}
-                className="group relative rounded-2xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-400 min-h-[280px] flex"
-              >
-                {/* Background image */}
-                <Image
-                  src={cat.image}
-                  alt={cat.name}
-                  fill
-                  className="object-cover object-center group-hover:scale-105 transition-transform duration-500"
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                />
-                {/* Gradient overlay */}
-                <div
-                  className={`absolute inset-0 bg-gradient-to-t ${cat.gradient} opacity-80 group-hover:opacity-90 transition-opacity duration-300`}
-                />
-                <div className="relative p-8 flex flex-col justify-end text-white w-full">
+          <div className="grid md:grid-cols-2 gap-5">
+            {categories.map(cat => (
+              <Link key={cat.id} href={`/products#${cat.id}`}
+                className="group relative rounded-2xl overflow-hidden min-h-[270px] flex">
+                <Image src={cat.img} alt={cat.name} fill className="object-cover object-center group-hover:scale-105 transition-transform duration-500" sizes="(max-width:768px) 100vw, 50vw" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-black/10 group-hover:from-black/95 transition-all" />
+                {/* Green top accent */}
+                <div className="absolute top-0 left-0 right-0 h-0.5 bg-green-500 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
+                <div className="relative flex flex-col justify-end p-7 text-white w-full">
                   <h3 className="text-2xl font-bold mb-2">{cat.name}</h3>
-                  <p className="text-white/80 text-sm leading-relaxed mb-4">{cat.desc}</p>
+                  <p className="text-gray-300 text-sm leading-relaxed mb-4">{cat.desc}</p>
                   <div className="flex flex-wrap gap-2 mb-5">
-                    {cat.compositions.map((c) => (
-                      <span
-                        key={c}
-                        className="px-3 py-1 rounded-full text-xs font-medium bg-white/20 backdrop-blur-sm"
-                      >
-                        {c}
-                      </span>
-                    ))}
+                    {cat.tags.map(t => <span key={t} className="px-3 py-1 rounded-full text-xs bg-white/10 border border-white/10">{t}</span>)}
                   </div>
-                  <span className="inline-flex items-center gap-1.5 text-sm font-semibold group-hover:gap-3 transition-all">
+                  <span className="flex items-center gap-1.5 text-sm font-semibold text-green-400 group-hover:gap-3 transition-all">
                     View fabrics <ArrowRight size={14} />
                   </span>
                 </div>
               </Link>
             ))}
           </div>
-
           <div className="text-center mt-10">
-            <Link
-              href="/products"
-              className="inline-flex items-center gap-2 px-8 py-4 text-sm font-semibold text-white rounded-lg transition-all hover:-translate-y-0.5"
-              style={{ backgroundColor: "#102a43" }}
-            >
-              View All Products
-              <ArrowRight size={16} />
+            <Link href="/products"
+              className="inline-flex items-center gap-2 px-8 py-3.5 rounded-lg text-sm font-semibold text-black transition-all hover:brightness-110"
+              style={{ background: "#22c55e" }}>
+              View All Products <ArrowRight size={16} />
             </Link>
           </div>
         </div>
       </section>
 
-      {/* ── Why Choose Us ── */}
-      <section className="py-24 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* ── WHY US ── */}
+      <section className="py-24 bg-[#0d0d0d]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div>
-              <span
-                className="text-xs font-semibold uppercase tracking-widest"
-                style={{ color: "#d4842a" }}
-              >
-                Why TradeFabric
-              </span>
-              <h2
-                className="text-4xl font-bold mt-2 mb-6"
-                style={{
-                  color: "#102a43",
-                  fontFamily: "'Playfair Display', Georgia, serif",
-                }}
-              >
-                Quality Starts at the First Thread
-              </h2>
-              <p className="text-gray-500 leading-relaxed mb-8">
-                We combine 20+ years of experience, advanced manufacturing
-                capabilities, and an unwavering commitment to quality. Every
-                fabric begins with rigorously selected yarns and ends with a
-                comprehensive QA process.
+              <p className="text-xs font-semibold uppercase tracking-widest text-green-500 mb-2">Why TradeFabric</p>
+              <h2 className="text-4xl font-black text-white mb-5">Quality Starts at the First Thread</h2>
+              <p className="text-gray-400 leading-relaxed mb-8">
+                We combine 20+ years of expertise, modern manufacturing capabilities, and an unwavering commitment to quality. Every fabric begins with rigorously selected yarns and ends with a comprehensive QA process before it reaches you.
               </p>
-              <div className="space-y-3 mb-8">
-                {[
-                  "ISO-compliant quality standards",
-                  "Flexible MOQs for all business sizes",
-                  "Custom dyeing and finishing available",
-                  "Samples dispatched within 5–7 working days",
-                  "Dedicated account manager for each client",
-                ].map((item) => (
-                  <div key={item} className="flex items-center gap-3 text-sm text-gray-700">
-                    <CheckCircle size={16} style={{ color: "#d4842a" }} className="shrink-0" />
-                    {item}
-                  </div>
+              <ul className="space-y-3 mb-10">
+                {["ISO-compliant quality standards on all batches","Flexible MOQs — we work with all business sizes","Custom dyeing, printing & finishing available","Samples dispatched within 5–7 working days","Dedicated account manager per client"].map(item => (
+                  <li key={item} className="flex items-start gap-3 text-sm text-gray-300">
+                    <CheckCircle size={16} className="text-green-500 mt-0.5 shrink-0" />{item}
+                  </li>
                 ))}
-              </div>
-              <Link
-                href="/contact"
-                className="inline-flex items-center gap-2 px-7 py-3.5 text-sm font-semibold text-white rounded-lg"
-                style={{ backgroundColor: "#d4842a" }}
-              >
-                Talk to Our Team
-                <Phone size={15} />
+              </ul>
+              <Link href="/contact"
+                className="inline-flex items-center gap-2 px-7 py-3.5 rounded-lg text-sm font-semibold text-black"
+                style={{ background: "#22c55e" }}>
+                Talk to Our Team <ArrowRight size={15} />
               </Link>
             </div>
-
             <div className="grid grid-cols-2 gap-4">
-              {features.map((f) => (
-                <div
-                  key={f.title}
-                  className="p-5 rounded-2xl bg-white border border-gray-100 hover:border-amber-200 hover:shadow-md transition-all duration-300"
-                >
-                  <div
-                    className="w-10 h-10 rounded-xl flex items-center justify-center mb-3"
-                    style={{ backgroundColor: "rgba(212,132,42,0.1)" }}
-                  >
-                    <f.icon size={20} style={{ color: "#d4842a" }} />
+              {features.map(f => (
+                <div key={f.title} className="p-5 rounded-2xl bg-white/[0.03] border border-white/[0.06] hover:border-green-500/25 hover:bg-green-500/[0.03] transition-all group">
+                  <div className="w-10 h-10 rounded-xl bg-green-500/10 flex items-center justify-center mb-3 group-hover:bg-green-500/20 transition-colors">
+                    <f.icon size={19} className="text-green-400" />
                   </div>
-                  <h3 className="text-sm font-semibold mb-1" style={{ color: "#102a43" }}>
-                    {f.title}
-                  </h3>
-                  <p className="text-gray-400 text-xs leading-relaxed">{f.desc}</p>
+                  <h3 className="text-sm font-semibold text-white mb-1">{f.title}</h3>
+                  <p className="text-xs text-gray-500 leading-relaxed">{f.desc}</p>
                 </div>
               ))}
             </div>
@@ -467,124 +195,54 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── How It Works ── */}
-      <section
-        className="py-24"
-        style={{ background: "linear-gradient(135deg, #0a1929 0%, #102a43 100%)" }}
-      >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <span
-              className="text-xs font-semibold uppercase tracking-widest"
-              style={{ color: "#e29f4d" }}
-            >
-              Our Process
-            </span>
-            <h2
-              className="text-4xl font-bold text-white mt-2 mb-4"
-              style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
-            >
-              From Enquiry to Delivery
-            </h2>
-            <p className="text-gray-400 max-w-xl mx-auto">
-              A simple, transparent process designed to get the right fabric to
-              you as quickly and reliably as possible.
-            </p>
+      {/* ── HOW IT WORKS ── */}
+      <section className="py-24 bg-[#0a0a0a] border-y border-white/[0.06]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+          <div className="text-center mb-14">
+            <p className="text-xs font-semibold uppercase tracking-widest text-green-500 mb-2">Our Process</p>
+            <h2 className="text-4xl font-black text-white mb-3">From Enquiry to Delivery</h2>
+            <p className="text-gray-500 max-w-lg mx-auto">Simple, transparent and built for speed — getting the right fabric to you as fast as possible.</p>
           </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {processSteps.map((s, i) => (
-              <div key={s.step} className="relative">
-                {i < processSteps.length - 1 && (
-                  <div
-                    className="hidden lg:block absolute top-8 left-full w-full h-px -translate-x-6"
-                    style={{ background: "linear-gradient(to right, rgba(212,132,42,0.5), transparent)" }}
-                  />
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            {process.map((s, i) => (
+              <div key={s.n} className="relative p-6 rounded-2xl bg-[#111] border border-white/[0.06] hover:border-green-500/20 transition-all">
+                {i < process.length - 1 && (
+                  <div className="hidden lg:block absolute top-10 -right-2.5 w-5 h-px bg-green-500/30 z-10" />
                 )}
-                <div
-                  className="rounded-2xl p-6"
-                  style={{ backgroundColor: "rgba(255,255,255,0.05)" }}
-                >
-                  <div
-                    className="text-4xl font-bold mb-4"
-                    style={{ color: "rgba(212,132,42,0.35)" }}
-                  >
-                    {s.step}
-                  </div>
-                  <h3 className="text-white font-semibold mb-2">{s.title}</h3>
-                  <p className="text-gray-400 text-sm leading-relaxed">{s.desc}</p>
-                </div>
+                <div className="text-5xl font-black text-green-500/15 mb-4 leading-none">{s.n}</div>
+                <h3 className="text-white font-bold mb-2">{s.t}</h3>
+                <p className="text-gray-500 text-sm leading-relaxed">{s.d}</p>
               </div>
             ))}
           </div>
-
-          <div className="text-center mt-12">
-            <Link
-              href="/contact"
-              className="inline-flex items-center gap-2 px-8 py-4 text-sm font-semibold text-white rounded-lg border transition-all hover:-translate-y-0.5"
-              style={{ borderColor: "#d4842a", color: "#e29f4d" }}
-            >
-              Start Your Enquiry
-              <ArrowRight size={16} />
+          <div className="text-center mt-10">
+            <Link href="/contact"
+              className="inline-flex items-center gap-2 px-8 py-3.5 rounded-lg text-sm font-semibold border border-green-500/40 text-green-400 hover:bg-green-500/5 transition-all">
+              Start Your Enquiry <ArrowRight size={15} />
             </Link>
           </div>
         </div>
       </section>
 
-      {/* ── Testimonials ── */}
-      <section className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <span
-              className="text-xs font-semibold uppercase tracking-widest"
-              style={{ color: "#d4842a" }}
-            >
-              Client Stories
-            </span>
-            <h2
-              className="text-4xl font-bold mt-2"
-              style={{
-                color: "#102a43",
-                fontFamily: "'Playfair Display', Georgia, serif",
-              }}
-            >
-              Trusted by Brands Worldwide
-            </h2>
+      {/* ── TESTIMONIALS ── */}
+      <section className="py-24 bg-[#0d0d0d]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+          <div className="text-center mb-14">
+            <p className="text-xs font-semibold uppercase tracking-widest text-green-500 mb-2">Client Stories</p>
+            <h2 className="text-4xl font-black text-white">Trusted by Brands Worldwide</h2>
           </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {testimonials.map((t) => (
-              <div
-                key={t.name}
-                className="p-7 rounded-2xl border border-gray-100 hover:border-amber-200 hover:shadow-lg transition-all duration-300"
-              >
-                <div className="flex gap-1 mb-4">
-                  {Array.from({ length: t.rating }).map((_, i) => (
-                    <Star
-                      key={i}
-                      size={14}
-                      fill="#d4842a"
-                      style={{ color: "#d4842a" }}
-                    />
-                  ))}
+          <div className="grid md:grid-cols-3 gap-5">
+            {testimonials.map(t => (
+              <div key={t.name} className="p-7 rounded-2xl bg-[#111] border border-white/[0.06] hover:border-green-500/20 transition-all">
+                <div className="flex gap-0.5 mb-4">
+                  {[...Array(5)].map((_, i) => <Star key={i} size={13} fill="#22c55e" className="text-green-500" />)}
                 </div>
-                <p className="text-gray-600 text-sm leading-relaxed mb-6 italic">
-                  &ldquo;{t.quote}&rdquo;
-                </p>
+                <p className="text-gray-400 text-sm leading-relaxed mb-6 italic">&ldquo;{t.quote}&rdquo;</p>
                 <div className="flex items-center gap-3">
-                  <div
-                    className="w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold text-white"
-                    style={{ backgroundColor: "#102a43" }}
-                  >
-                    {t.name.charAt(0)}
-                  </div>
+                  <div className="w-9 h-9 rounded-full bg-green-500/10 border border-green-500/20 flex items-center justify-center text-green-400 text-sm font-bold">{t.name[0]}</div>
                   <div>
-                    <div className="text-sm font-semibold" style={{ color: "#102a43" }}>
-                      {t.name}
-                    </div>
-                    <div className="text-xs text-gray-400">
-                      {t.role} · {t.country}
-                    </div>
+                    <p className="text-sm font-semibold text-white">{t.name} {t.flag}</p>
+                    <p className="text-xs text-gray-600">{t.role}</p>
                   </div>
                 </div>
               </div>
@@ -593,139 +251,57 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── About Teaser ── */}
-      <section className="py-24 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* ── ABOUT STRIP ── */}
+      <section className="py-24 bg-[#0a0a0a]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <div className="relative rounded-2xl overflow-hidden aspect-[4/3]">
+            <div className="relative rounded-2xl overflow-hidden aspect-[4/3] border border-white/[0.06]">
               <Image
                 src="https://images.unsplash.com/photo-1516762689617-e1cffcef479d?w=900&q=85"
-                alt="TradeFabric fabric manufacturing facility"
-                fill
-                className="object-cover"
-                sizes="(max-width: 1024px) 100vw, 50vw"
-              />
-              <div
-                className="absolute bottom-6 left-6 right-6 rounded-xl p-5 backdrop-blur-md"
-                style={{ backgroundColor: "rgba(10,25,41,0.85)" }}
-              >
-                <div className="flex items-center gap-4">
-                  <div
-                    className="w-12 h-12 rounded-xl flex items-center justify-center shrink-0"
-                    style={{ backgroundColor: "#d4842a" }}
-                  >
-                    <Award size={22} className="text-white" />
+                alt="TradeFabric fabric quality" fill className="object-cover" sizes="(max-width:1024px) 100vw, 50vw" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
+              <div className="absolute bottom-5 left-5 right-5 p-4 rounded-xl bg-black/70 backdrop-blur-md border border-white/10">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-lg bg-green-500 flex items-center justify-center shrink-0">
+                    <Award size={18} className="text-black" />
                   </div>
                   <div>
-                    <div className="text-white font-semibold text-sm">
-                      20+ Years of Excellence
-                    </div>
-                    <div className="text-gray-400 text-xs mt-0.5">
-                      Anil International · New Delhi, India
-                    </div>
+                    <p className="text-white text-sm font-semibold">20+ Years of Excellence</p>
+                    <p className="text-gray-400 text-xs">Anil International · Badli, Delhi</p>
                   </div>
                 </div>
               </div>
             </div>
-
             <div>
-              <span
-                className="text-xs font-semibold uppercase tracking-widest"
-                style={{ color: "#d4842a" }}
-              >
-                About TradeFabric
-              </span>
-              <h2
-                className="text-4xl font-bold mt-2 mb-6"
-                style={{
-                  color: "#102a43",
-                  fontFamily: "'Playfair Display', Georgia, serif",
-                }}
-              >
-                Decades of Fabric Expertise, Delivered Globally
-              </h2>
-              <p className="text-gray-500 leading-relaxed mb-4">
-                TradeFabric, a division of Anil International, has been a
-                trusted fabric supplier for over two decades. Based in New
-                Delhi, India, we specialise in high-quality knitted and woven
-                fabrics — primarily polyester, nylon, and spandex blends — for
-                the global apparel industry.
+              <p className="text-xs font-semibold uppercase tracking-widest text-green-500 mb-2">About TradeFabric</p>
+              <h2 className="text-4xl font-black text-white mb-5">Decades of Fabric Expertise, Delivered Globally</h2>
+              <p className="text-gray-400 leading-relaxed mb-4">
+                Tradefabric specializes in trading high-quality imported and domestic fabrics, specially in polyester/nylon spandex blended knitted and woven fabrics. Our expertise lies in providing fabrics that are quick-drying, breathable, durable and perfect for sports and casual wear.
               </p>
-              <p className="text-gray-500 leading-relaxed mb-8">
-                Our philosophy is simple: superior yarns make superior fabrics.
-                Every roll begins with carefully selected raw materials and ends
-                with rigorous quality checks before reaching our customers.
+              <p className="text-gray-400 leading-relaxed mb-8">
+                Based in Badli, Delhi, we&apos;ve built a reputation for consistent quality and reliable delivery across 50+ countries. Superior yarns make superior fabrics — that philosophy drives everything we do.
               </p>
-
-              <div className="grid grid-cols-2 gap-4 mb-8">
-                {[
-                  { v: "500+", l: "Fabric Varieties" },
-                  { v: "50+", l: "Export Markets" },
-                  { v: "20+", l: "Years Experience" },
-                  { v: "99%", l: "Client Retention" },
-                ].map((s) => (
-                  <div
-                    key={s.l}
-                    className="rounded-xl p-4 bg-white border border-gray-100 text-center"
-                  >
-                    <div className="text-2xl font-bold mb-0.5" style={{ color: "#d4842a" }}>
-                      {s.v}
-                    </div>
-                    <div className="text-xs text-gray-500">{s.l}</div>
-                  </div>
-                ))}
-              </div>
-
-              <Link
-                href="/about"
-                className="inline-flex items-center gap-2 text-sm font-semibold transition-colors"
-                style={{ color: "#d4842a" }}
-              >
-                Read Our Story
-                <ArrowRight size={16} />
+              <Link href="/about" className="inline-flex items-center gap-2 text-sm font-semibold text-green-400 hover:text-green-300 transition-colors">
+                Read Our Story <ArrowRight size={15} />
               </Link>
             </div>
           </div>
         </div>
       </section>
 
-      {/* ── CTA Banner ── */}
-      <section
-        className="py-20 relative overflow-hidden"
-        style={{ backgroundColor: "#d4842a" }}
-      >
-        <div
-          className="absolute inset-0 opacity-10"
-          style={{
-            backgroundImage:
-              "repeating-linear-gradient(45deg, #fff 0, #fff 1px, transparent 0, transparent 50%)",
-            backgroundSize: "20px 20px",
-          }}
-        />
-        <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2
-            className="text-4xl font-bold text-white mb-4"
-            style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
-          >
-            Ready to Source Premium Fabrics?
-          </h2>
-          <p className="text-amber-100 mb-10 text-lg max-w-xl mx-auto">
-            Contact our team for samples, bulk pricing, and custom fabric
-            development. We work with brands of all sizes.
-          </p>
+      {/* ── CTA ── */}
+      <section className="py-20 relative overflow-hidden" style={{ background: "linear-gradient(135deg, #15803d 0%, #22c55e 100%)" }}>
+        <div className="absolute inset-0 bg-grid opacity-20" />
+        <div className="relative max-w-4xl mx-auto px-4 text-center">
+          <h2 className="text-4xl font-black text-black mb-4">Ready to Source Premium Fabrics?</h2>
+          <p className="text-black/70 text-lg mb-10 max-w-xl mx-auto">Contact our team for samples, bulk pricing and custom fabric development. We work with brands of all sizes.</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              href="/contact"
-              className="inline-flex items-center justify-center gap-2 px-10 py-4 text-base font-semibold bg-white rounded-lg hover:-translate-y-0.5 transition-all"
-              style={{ color: "#d4842a" }}
-            >
-              Get a Free Quote
-              <ArrowRight size={18} />
+            <Link href="/contact"
+              className="inline-flex items-center justify-center gap-2 px-10 py-4 text-sm font-bold bg-black text-white rounded-lg hover:-translate-y-0.5 transition-all">
+              Get a Free Quote <ArrowRight size={17} />
             </Link>
-            <Link
-              href="/products"
-              className="inline-flex items-center justify-center gap-2 px-10 py-4 text-base font-semibold text-white rounded-lg border-2 border-white/50 hover:border-white hover:-translate-y-0.5 transition-all"
-            >
+            <Link href="/products"
+              className="inline-flex items-center justify-center gap-2 px-10 py-4 text-sm font-bold text-black rounded-lg border-2 border-black/30 hover:border-black hover:-translate-y-0.5 transition-all">
               Browse Products
             </Link>
           </div>
