@@ -1,13 +1,13 @@
 "use client";
-
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Phone, ShoppingCart } from "lucide-react";
+import { SITE } from "@/lib/config";
 
-const navLinks = [
+const NAV = [
   { href: "/", label: "Home" },
-  { href: "/products", label: "Products" },
+  { href: "/products", label: "Collection" },
   { href: "/about", label: "About Us" },
   { href: "/contact", label: "Contact" },
 ];
@@ -17,103 +17,89 @@ export default function Header() {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20);
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+    const fn = () => setScrolled(window.scrollY > 8);
+    window.addEventListener("scroll", fn, { passive: true });
+    return () => window.removeEventListener("scroll", fn);
   }, []);
 
   return (
-    <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? "bg-white shadow-md border-b border-gray-100"
-          : "bg-white/95 backdrop-blur-sm border-b border-gray-100"
-      }`}
-    >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-[70px]">
+    <header className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${scrolled ? "bg-[#0a0a0a]/98 shadow-[0_1px_0_rgba(255,255,255,0.06)] backdrop-blur-md" : "bg-[#0a0a0a]"}`}>
+      {/* Top bar — desktop only */}
+      <div className="hidden lg:block border-b border-white/[0.06] bg-[#080808]">
+        <div className="max-w-7xl mx-auto px-6 flex items-center justify-between h-9 text-[11px] text-gray-500">
+          <span>📍 {SITE.addressShort} &nbsp;·&nbsp; Premium Fabric Supplier</span>
+          <div className="flex items-center gap-6">
+            <a href={`tel:${SITE.phoneE164}`} className="hover:text-green-500 transition-colors flex items-center gap-1">
+              <Phone size={10} /> {SITE.phone}
+            </a>
+            <a href={`mailto:${SITE.email}`} className="hover:text-green-500 transition-colors">{SITE.email}</a>
+          </div>
+        </div>
+      </div>
+
+      {/* Main row */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
+        <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <Link href="/" className="flex items-center shrink-0">
-            <Image
-              src="/logo.svg"
-              alt="TradeFabric — Premium Performance Textiles"
-              width={200}
-              height={46}
-              priority
-              className="h-10 w-auto"
-            />
+          <Link href="/" className="shrink-0">
+            <Image src="/logo-dark.svg" alt="TradeFabric" width={185} height={46} priority className="h-10 w-auto" />
           </Link>
 
-          {/* Desktop Nav */}
-          <nav className="hidden md:flex items-center gap-8">
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="text-sm font-medium text-gray-600 hover:text-amber-600 transition-colors duration-200 relative group"
-              >
-                {link.label}
-                <span
-                  className="absolute -bottom-1 left-0 w-0 h-0.5 group-hover:w-full transition-all duration-200"
-                  style={{ backgroundColor: "#d4842a" }}
-                />
+          {/* Desktop nav */}
+          <nav className="hidden md:flex items-center gap-7">
+            {NAV.map(({ href, label }) => (
+              <Link key={href} href={href} className="text-sm font-medium text-gray-400 hover:text-white transition-colors relative group">
+                {label}
+                <span className="absolute -bottom-0.5 left-0 h-px w-0 bg-green-500 group-hover:w-full transition-all duration-200" />
               </Link>
             ))}
           </nav>
 
-          {/* CTA */}
+          {/* Desktop CTAs */}
           <div className="hidden md:flex items-center gap-3">
-            <Link
-              href="tel:+911100000000"
-              className="text-sm font-medium text-gray-500 hover:text-amber-600 transition-colors"
-            >
-              +91-11-0000-0000
+            <Link href="/contact" className="text-sm font-medium text-gray-400 px-4 py-2 rounded-lg border border-white/10 hover:border-white/20 hover:text-white transition-all">
+              Bulk Inquiry
             </Link>
             <Link
-              href="/contact"
-              className="px-5 py-2.5 text-sm font-semibold text-white rounded-lg transition-all duration-200 shadow-sm hover:shadow-md"
-              style={{ backgroundColor: "#d4842a" }}
+              href="/products"
+              className="text-sm font-semibold text-black px-5 py-2.5 rounded-lg transition-all hover:brightness-110 hover:-translate-y-px"
+              style={{ background: "#22c55e" }}
             >
-              Get a Quote
+              Explore Collection →
             </Link>
           </div>
 
-          {/* Mobile toggle */}
-          <button
-            className="md:hidden p-2 rounded-md text-gray-600 hover:bg-gray-100 transition-colors"
-            onClick={() => setOpen(!open)}
-            aria-label="Toggle menu"
-          >
-            {open ? <X size={22} /> : <Menu size={22} />}
-          </button>
+          {/* Mobile icons */}
+          <div className="md:hidden flex items-center gap-2">
+            <Link href="/contact" aria-label="Cart" className="p-2 text-gray-400 hover:text-white">
+              <ShoppingCart size={20} />
+            </Link>
+            <button onClick={() => setOpen(!open)} aria-label="Menu" className="p-2 text-gray-400 hover:text-white">
+              {open ? <X size={22} /> : <Menu size={22} />}
+            </button>
+          </div>
         </div>
       </div>
 
-      {/* Mobile menu */}
-      <div
-        className={`md:hidden overflow-hidden transition-all duration-300 ${
-          open ? "max-h-96" : "max-h-0"
-        } bg-white border-t border-gray-100`}
-      >
-        <div className="px-4 pb-6 pt-2">
-          {navLinks.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className="block py-3 text-base font-medium text-gray-700 border-b border-gray-100 hover:text-amber-600 transition-colors"
-              onClick={() => setOpen(false)}
-            >
-              {link.label}
+      {/* Mobile drawer */}
+      <div className={`md:hidden overflow-hidden transition-all duration-300 border-t border-white/[0.06] bg-[#0d0d0d] ${open ? "max-h-96" : "max-h-0"}`}>
+        <div className="px-4 py-4 space-y-1">
+          {NAV.map(({ href, label }) => (
+            <Link key={href} href={href} onClick={() => setOpen(false)}
+              className="block px-3 py-3 text-base font-medium text-gray-300 hover:text-green-400 hover:bg-white/5 rounded-lg transition-all">
+              {label}
             </Link>
           ))}
-          <Link
-            href="/contact"
-            className="mt-4 block text-center px-5 py-3 text-sm font-semibold text-white rounded-lg"
-            style={{ backgroundColor: "#d4842a" }}
-            onClick={() => setOpen(false)}
-          >
-            Get a Quote
-          </Link>
+          <div className="pt-3 space-y-2">
+            <Link href="/products" onClick={() => setOpen(false)}
+              className="block text-center py-3 text-sm font-semibold text-black rounded-lg"
+              style={{ background: "#22c55e" }}>
+              Explore Collection →
+            </Link>
+            <a href={`tel:${SITE.phoneE164}`} className="flex items-center justify-center gap-2 py-2 text-sm text-gray-500">
+              <Phone size={13} /> {SITE.phone}
+            </a>
+          </div>
         </div>
       </div>
     </header>

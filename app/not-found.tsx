@@ -2,36 +2,17 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 
-export const metadata: Metadata = {
-  title: "Page Not Found",
-  description: "The page you are looking for does not exist.",
-  robots: { index: false, follow: false },
-};
+export const metadata: Metadata = { title: "404 — Page Not Found", robots: { index: false } };
 
 export default function NotFound() {
   return (
-    <div
-      className="min-h-screen flex items-center justify-center text-center px-4"
-      style={{ background: "linear-gradient(135deg, #0a1929 0%, #102a43 100%)" }}
-    >
+    <div className="min-h-screen flex items-center justify-center text-center px-4 bg-black">
       <div>
-        <div className="text-8xl font-bold mb-4" style={{ color: "#d4842a" }}>404</div>
-        <h1
-          className="text-3xl font-bold text-white mb-4"
-          style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
-        >
-          Page Not Found
-        </h1>
-        <p className="text-gray-400 mb-8 max-w-sm mx-auto">
-          The page you&apos;re looking for doesn&apos;t exist or has been moved.
-        </p>
-        <Link
-          href="/"
-          className="inline-flex items-center gap-2 px-8 py-4 text-sm font-semibold text-white rounded-md"
-          style={{ backgroundColor: "#d4842a" }}
-        >
-          Back to Home
-          <ArrowRight size={16} />
+        <div className="text-8xl font-black text-green-500/20 mb-2">404</div>
+        <h1 className="text-3xl font-black text-white mb-3">Page Not Found</h1>
+        <p className="text-gray-500 mb-8 max-w-sm mx-auto">The page you&apos;re looking for doesn&apos;t exist or has been moved.</p>
+        <Link href="/" className="inline-flex items-center gap-2 px-8 py-4 text-sm font-bold text-black rounded-lg" style={{ background: "#22c55e" }}>
+          Back to Home <ArrowRight size={16} />
         </Link>
       </div>
     </div>
