@@ -1,20 +1,28 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 50" fill="none">
-  <!-- Icon box (dark bg) -->
-  <rect x="1" y="1" width="46" height="46" rx="6" fill="#1a1a1a"/>
-  <!-- T crossbar -->
-  <rect x="7" y="9" width="32" height="7" rx="2" fill="white"/>
-  <!-- T stem -->
-  <rect x="19" y="16" width="10" height="10" rx="1" fill="white"/>
-  <!-- Diagonal slash (green) -->
-  <polygon points="30,9 36,9 18,37 12,37" fill="#22c55e"/>
-  <!-- F right stem -->
-  <rect x="28" y="26" width="10" height="7" rx="1" fill="white"/>
-  <!-- F top bar -->
-  <rect x="20" y="26" width="18" height="6" rx="1" fill="white"/>
-  <!-- F mid bar -->
-  <rect x="20" y="35" width="14" height="5" rx="1" fill="white"/>
+<!-- TradeFabric logo — dark background version (white ink + forest green) -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 224 58" fill="none" role="img" aria-label="TradeFabric logo">
+  <title>TradeFabric</title>
 
-  <text x="56" y="25" font-family="Inter,Arial,sans-serif" font-size="17" font-weight="800" fill="white" letter-spacing="-0.3">TRADE</text>
-  <text x="108" y="25" font-family="Inter,Arial,sans-serif" font-size="17" font-weight="800" fill="#22c55e" letter-spacing="-0.3">FABRIC</text>
-  <text x="57" y="39" font-family="Inter,Arial,sans-serif" font-size="6" font-weight="500" fill="rgba(255,255,255,0.4)" letter-spacing="2.2">PREMIUM PERFORMANCE TEXTILES</text>
+  <!-- Green: diagonal slash -->
+  <polygon points="37,14  53,14  17,55  1,55" fill="#228B22"/>
+  <!-- Green: F top bar -->
+  <rect x="37" y="14" width="15" height="11" fill="#228B22"/>
+  <!-- Green: F middle bar -->
+  <rect x="27" y="30" width="15" height="10" fill="#228B22"/>
+
+  <!-- White: T crossbar -->
+  <rect x="1"  y="3"  width="51" height="11" rx="1" fill="#ffffff"/>
+  <!-- White: T left stem -->
+  <rect x="1" y="14" width="13" height="41" rx="0.5" fill="#ffffff"/>
+
+  <!-- Wordmark -->
+  <text
+    x="63" y="32"
+    font-family="'Inter','Arial Black',Arial,sans-serif"
+    font-size="21" font-weight="900" fill="#ffffff" letter-spacing="2"
+  >TRADE</text>
+  <text
+    x="127" y="32"
+    font-family="'Inter','Arial Black',Arial,sans-serif"
+    font-size="21" font-weight="900" fill="#228B22" letter-spacing="2"
+  >FABRIC</text>
 </svg>
