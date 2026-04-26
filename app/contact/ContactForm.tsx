@@ -63,7 +63,7 @@ export default function ContactForm() {
       </div>
       <button type="submit" disabled={loading}
         className="w-full flex items-center justify-center gap-2 py-4 text-sm font-bold text-black rounded-lg transition-all hover:brightness-110 disabled:opacity-60"
-        style={{ background: "#22c55e" }}>
+        style={{ background: "#228B22" }}>
         {loading ? <><Loader2 size={16} className="animate-spin" /> Sending...</> : <>Send Message <ArrowRight size={16} /></>}
       </button>
     </form>
